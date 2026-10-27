@@ -1,0 +1,14 @@
+Shelf home screen
+
+Code: forked from dumbtv home (MIT, Copyright (c) 2026 dumbtv contributors).
+Look: adapted from CleanFrame by Nathan Clark (MIT, Copyright (c) 2026 Nathan Clark),
+https://github.com/nthnclrk/CleanFrame
+
+Font: Geist (SIL Open Font License 1.1, see fonts/Geist-OFL.txt), static Medium and
+SemiBold instances made from CleanFrame's Geist-Variable.ttf.
+
+Photographs (Unsplash License, https://unsplash.com/license), via CleanFrame:
+  misty   Misty coast    Ganapathy Kumar     https://unsplash.com/photos/n4VMQZIkgDg
+  cove    Quiet cove     Joshua Wordel       https://unsplash.com/photos/1L_5PT7EKzU
+  forest  Forest mist    Dejan Zakic         https://unsplash.com/photos/rr2EF3J5F2Y
+  night   Desert stars   Mohammad Alizade    https://unsplash.com/photos/4wzRuAb-KWs

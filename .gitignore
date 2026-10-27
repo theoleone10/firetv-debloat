@@ -1,0 +1,11 @@
+# Device snapshots and logs: they describe your TV, keep them local
+backups/
+
+# Build output
+launcher/build/
+
+# Signing key: private, and app updates must be signed with this same key.
+# Back it up somewhere safe instead of committing it.
+launcher/release.keystore
+
+.DS_Store
