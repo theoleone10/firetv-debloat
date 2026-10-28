@@ -1,0 +1,29 @@
+# Packages debloat.sh disables, at most 10 per batch, in this order.
+# One package per line; text after "#" is the explanation shown before each batch.
+#
+# Device: Fire TV Stick AFTSS ("sheldon"), Fire OS 7.7.1.7 (build PS7717.5741N).
+# Source: github.com/humblemuzzu/dumbtv data/fireos/packages.txt (commit 755991b,
+# 2026-10-27), whose catalog entry fireos-amazon-aftss.yaml was tested on this exact build.
+# Narrowed for this TV: a package is listed only when its name AND the components it
+# declares on this TV (adb shell dumpsys package) point the same way. See README.md for
+# the packages deliberately left enabled and why.
+
+# RESULT ON THIS TV (2026-10-27): batch 1 disabled cleanly, but Fire OS 7.7.1.7 put all
+# seven back to enabled at the next reboot (see backups/reverted-by-fireos.txt). The owner
+# chose to stop there, so the lists below are commented out. Uncomment to try again.
+
+# --- Batch 1: ads, tracking and telemetry (nothing the home screen uses) ---
+# com.amazon.hybridadidservice           # advertising ID service (declares HybridAdIdService)
+# com.amazon.tv.acr                      # Automatic Content Recognition: identifies what is on screen
+# com.amazon.ceviche                     # analytics pipeline (declares TrackEventsContentProvider)
+# com.amazon.tv.fw.metrics               # Fire TV framework metrics (declares MetricsReceiver)
+# com.amazon.perfcollection              # performance data collection
+# com.amazon.neo.minerva.logcat          # collects device logs for Amazon's metrics service
+# com.amazon.tv.developer.dataservice    # content-personalisation data puller
+
+# --- Batch 2: home-screen promos and shopping ---
+# Enabled only after the Shelf launcher is installed and the Home button is confirmed
+# to work (step d). Remove the leading "# " from these three lines then.
+# com.amazon.sneakpeek                 # autoplaying promo previews on Amazon's home screen
+# com.amazon.shoptv.client             # Amazon shopping on the TV
+# com.amazon.shoptv.firetv.client      # launcher stub for Amazon shopping

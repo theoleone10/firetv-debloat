@@ -78,6 +78,7 @@ public final class Home extends Activity {
     private LinearLayout column, strip;
     private View spacer;
     private Glass dock;
+    private HeaderFade headerFade;
     private TextView moreTitle, inputsTitle, clock, utilLabel;
     private Grid more, inputGrid;
     private LinearLayout utils;
@@ -331,12 +332,6 @@ public final class Home extends Activity {
                 setScrolled(t > dp(40));
             }
 
-            /** Only the top edge fades, under the clock; the peeking row at the bottom stays crisp. */
-            @Override
-            protected float getBottomFadingEdgeStrength() {
-                return 0f;
-            }
-
             /** Up and down only move the focus; scrolling follows it, a whole row at a time. */
             @Override
             public boolean executeKeyEvent(KeyEvent e) {
@@ -357,9 +352,10 @@ public final class Home extends Activity {
         page.setOverScrollMode(View.OVER_SCROLL_NEVER);
         page.setClipChildren(false);
         page.setSmoothScrollingEnabled(true);
-        page.setVerticalFadingEdgeEnabled(true);
-        page.setFadingEdgeLength(dp(70));
         root.addView(page, new FrameLayout.LayoutParams(MATCH, MATCH));
+        headerFade = new HeaderFade(this, root);
+        headerFade.setAlpha(0f);
+        root.addView(headerFade, new FrameLayout.LayoutParams(MATCH, dp(ROW_STOP - 15), Gravity.TOP));
 
         column = new LinearLayout(this);
         column.setOrientation(LinearLayout.VERTICAL);
@@ -615,6 +611,7 @@ public final class Home extends Activity {
                 photo.setImageBitmap(p);
                 soft.setImageBitmap(s);
                 dock.setSoft(s);
+                headerFade.set(s, 0x6B060A0C, cfg.background());
                 int shades = p == null ? View.GONE : View.VISIBLE;
                 topShade.setVisibility(shades);
                 scrim.setVisibility(shades);
@@ -655,6 +652,7 @@ public final class Home extends Activity {
         soft.animate().alpha(softTo).setDuration(360).start();
         veil.animate().alpha(veilTo).setDuration(360).start();
         scrim.animate().alpha(on ? 0f : 1f).setDuration(360).start();
+        headerFade.animate().alpha(veilTo).setDuration(on ? 200 : 120).start();
     }
 
     // ---------------------------------------------------------------- tiles
